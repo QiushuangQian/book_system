@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {{ book.name }}
+{% endblock %}
+
+{% block body_block %}
+    <!--<h1>图书信息</h1>-->
+    </br>
+    <div>
+        {% if category %}
+            <h1>{{ book.name }}</h1>
+        {% endif %}
+        {% if book %}
+            <ul>
+                <img src="/media/{{ book.picture }}" alt="Picture" />
+                <li>书名：{{ book.name }}</li>
+                <li>作者：{{ book.author}}</li>
+                <li>&#65509;{{ book.price }}</li>
+                <li>分类：{{ category.name }}</li>
+                {% autoescape off %}
+                <li>简介：{{ book.description}}</li>
+                {% endautoescape %}
+            </ul>
+            <div class="btn-group">
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input id="book_count"  type="number" step="1"  min="1" value="1" style="width:50px;">
+                <button id="book_add_cart" class="btn btn-primary" type="submit" name="submit" data-bookid="{{ book.id }}">加入购物车</button>
+            </div>
+        {% else %}
+            <strong>No pages currently in category.</strong>
+        {% endif %}
+    </div>
+    {% if comments %}
+        <hr/>
+        <h4 class="bg-success">用户评论</h4>
+        <div>
+        {% for comment in comments %}
+            <div style="display: flex;">
+                <p style="margin:2pt">评分：{{ comment.score }}</p>
+                <p style="margin:2pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p style="margin:2pt">用户名：{{ comment.user.username }}</p>
+            </div>
+            {% autoescape off %}
+            <p style="margin:2pt">评论：{{ comment.content }}</p>
+            {% endautoescape %}
+            <hr/>
+        {% endfor %}
+        </div>
+    {% endif %}
+    <!--<div>
+        {% if user.is_authenticated %}
+            <input id="content" type="text" value="" />
+            <input id="score" type="number" value="" />
+            <button id="comment" data-bookid="{{book.id}}" data-userid={{user.id}}
+                class="btn btn-primary btn-sm" type="button">
+                Comment
+            </button>
+        {% endif %}
+    </div>
+    -->
+{% endblock %}

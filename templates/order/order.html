@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    订单详情
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    </br>
+    <h3>订单详情</h3>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th>订单编号</th>
+                <th>商品名称</th>
+                <th>数量</th>
+                <th>总价</th>
+                <th>评论</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if orders %}
+                    {% for item in orders %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.goods_name }}</td>
+                            <td>{{ item.goods_count }}</td>
+                            <td>{{ item.total_price }}</td>
+                            {% if item.not_comment %}
+                                <td><button><a href="{% url 'comment' %}?order_id={{ item.id }}&book_id={{ item.goods_id }}">评价商品</a></button></td>
+                            {% endif %}
+                            {% if item.has_comment %}
+                                <td>已经评价</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+{% endblock %}

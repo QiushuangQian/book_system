@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {{ category.name }}
+{% endblock %}
+
+{% block body_block %}
+    </br>
+    <div class="input-group">
+        <input type="text" size="50" name="category_query" value="" id="category_query" />
+        <button id="btn_category_search" class="btn btn-primary" type="submit" name="submit" value="Search">Search</button>
+    </div>
+    {% if category %}
+        </br>
+        <h3>{{ category.name }}</h3>
+        <input id="category_categoryid" type='hidden' value='{{ category.id }}' />
+        <div class="row" id="category_book_result">
+        {% if books %}
+            {% for book in books %}
+                <div class="col-sm-6 col-md-4 col-lg-3" style="font-size: 14px">
+                    <a href="/book/book/{{ book.id }}">
+                        <div style="width:150px;height:200px;background: url('/media/{{ book.picture }}') no-repeat center; background-size: contain;"  alt="Picture" ></div>
+                    </a><br>
+                    <a href="/book/book/{{ book.id }}"><strong>{{ book.name }}</strong></a>
+                    <p style="margin:2pt">{{ book.author }}</p>
+                    <p style="margin:2pt">&#65509;{{ book.price }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <strong>There are no books present.</strong>
+        {% endif %}
+        </div>
+    {% else %}
+        The specified category does not exist!
+    {% endif %}
+{% endblock %}

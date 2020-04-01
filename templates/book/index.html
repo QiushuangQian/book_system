@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    图书首页
+{% endblock %}
+
+{% block body_block %}
+
+    </br>
+    <div class="input-group">
+        <input type="text" size="50" name="query" value="" id="query" />
+        <button id="btn_search" class="btn btn-primary" type="submit" name="submit" value="Search">Search</button>
+    </div>
+    <div id="book_result" class="container">
+        </br>
+        <h3>新书上架</h3>
+        <div class="row">
+        {% if books %}
+            {% for book in books %}
+                <div class="col-sm-6 col-md-4 col-lg-3" style="font-size: 14px">
+                    <a href="/book/book/{{ book.id }}">
+                        <div style="width:150px;height:200px;background: url('/media/{{ book.picture }}') no-repeat center; background-size: contain;"  alt="Picture" ></div></a><br>
+{#                              <a href="/book/book/{{ book.id }}">#}
+{#                                  <div  style="width:270px; height:360px;#}
+{#        background:white url('https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1584798780&di=d323867e54c7e951fbc6ad9f3728c525&src=http://a3.att.hudong.com/68/61/300000839764127060614318218_950.jpg') no-repeat center;#}
+{#        background-size: contain;" ></div></a><br>#}
+
+                    <a href="/book/book/{{ book.id }}"><strong>{{ book.name }}</strong></a>
+                    <p style="margin:2pt">{{ book.author }}</p>
+                    <p style="margin:2pt">&#65509;{{ book.price }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <strong>There are <no></no> books present.</strong>
+        {% endif %}
+        </div>
+    </div>
+    <hr/>
+    <div>
+        {% if user.is_authenticated %}
+            <h3>个性推荐</h3>
+            <input id="favorite_userid" type='hidden' value='{{ user.id }}' />
+            <div class="row" id="book_favorite">
+            </div>
+            <!--<a href="/book/about/">About Rango</a><br />
+            <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />-->
+        {% endif %}
+    </div>
+{% endblock %}

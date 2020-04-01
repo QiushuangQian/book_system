@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/book_system/settings.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/import_data/insert_2category.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/import_data/insert_3book.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/import_data/insert_user.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order/models.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/order/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/js/book-ajax.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/book/comment.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/order/cart.html" charset="UTF-8" />
+  </component>
+</project>

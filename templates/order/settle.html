@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    购物车结算
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 text-center">
+        {% if count %}
+            <h3>成功购买{{ count }}件商品</h3>
+        {% else %}
+            <h3>购买商品失败</h3>
+        {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 text-center">
+            <a class="btn btn-primary" href="http://127.0.0.1:8000/">返回首页</a>
+            <a class="btn btn-primary" href="{% url 'show_order' %}">查看订单</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

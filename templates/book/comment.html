@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    评价订单
+{% endblock %}
+
+{% block body_block %}
+    <div class="container">
+        </br>
+        <h3>评价订单</h3>
+        <p>订单号：{{ order_id }}</p>
+    </div>
+    <div class="container" id="comment_body">
+        <br>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2" style="font-size: 14px">
+                <p>商品评分</p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2" style="font-size: 14px">
+                <input id="score" type="number" step="2" min="0" max="10" value="10">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2" style="font-size: 14px">
+                <p>评价晒单</p>
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                 <textarea id="content" class="form-control" id="deblock_udid" rows="8"></textarea>
+            </div>
+        </div>
+        <br>
+       <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2" style="font-size: 14px">
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                <button class="btn btn-primary" id="comment" data-bookid="{{ book_id }}" data-userid="{{ user_id }}" data-orderid="{{ order_id }}">发表</button>
+            </div>
+       </div>
+    </div>
+{% endblock %}

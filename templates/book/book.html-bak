@@ -1,0 +1,24 @@
+{% extends 'book/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {{ book.name }}
+{% endblock %}
+
+{% block body_block %}
+    <h1>图书信杯</h1>
+    <div>
+        {% if category %}
+            <h1>{{ book.name }}</h1>
+        {% endif %}
+        {% if book %}
+            <ul>
+                <li>{{ book.author}}</li>
+                <li>{{ category.name }}</li>
+                <li>{{ book.description}}</li>
+            </ul>
+        {% else %}
+            <strong>No pages currently in category.</strong>
+        {% endif %}
+    </div>
+{% endblock %}
